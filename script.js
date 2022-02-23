@@ -14,15 +14,15 @@ $(document).ready(function () {
 
 
 // As the user replies, we will append new questions to the page:
-const yesBtn = $('.yes');
-const noBtn = $('.no');
+const yes1 = $('#yes1');
+const no1 = $('#no1');
 const questionOne = $('#question1');
 const questionTwo = $('#question2');
 const questionThree = $('#question3');
 // show question 2
 
 // var instance = M.Collapsible.getInstance(elem);
-noBtn.on('click', function(event) {
+no1.on('click', function(event) {
    
     questionOne.removeClass('active');
     questionThree.removeClass('hidden');
@@ -31,15 +31,24 @@ noBtn.on('click', function(event) {
 });
 
 
-yesBtn.on('click', function (event) {
+yes1.on('click', function (event) {
     //  alert('clicked');
     questionOne.removeClass('active').addClass('replied');
-    yesBtn.addClass('disabled');
-    noBtn.addClass('disabled');
+    yes1.addClass('disabled btn-large');
+    no1.addClass('disabled btn-flat');
     questionTwo.removeClass('hidden');
     questionTwo.addClass('active');
     $('.collapsible').collapsible();
 });
+
+
+$('.btn').click(function () {
+  // alert(`clicked id ${this.id}`);
+  $(this).addClass('disabled btn-large');
+  $(`#question${this.id}`).removeClass('hidden');
+
+});
+
 
 // show question 3
 
