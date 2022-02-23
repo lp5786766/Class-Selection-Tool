@@ -1,3 +1,7 @@
 .hidden {
     display: none;
 }
+
+.replied {
+    background-color: blueviolet;
+}
