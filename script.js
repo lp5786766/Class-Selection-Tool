@@ -48,11 +48,15 @@ $('.btn').click(function () {
   // disable the other button:
   let currentId = this.id;
   let otherBtn;
+  const startOverBtn = $('#start_over');
   if (currentId % 2 == 0) {
     otherBtn = parseInt(currentId) + 1;
   } else {
     otherBtn = parseInt(currentId) - 1;
   }
+  if (currentId == 2 || currentId == 3) {
+    startOverBtn.removeClass('hidden');
+  };
 
   $(`#${otherBtn}`).addClass('disabled btn-flat');
   $(this).addClass('disabled btn-large');
