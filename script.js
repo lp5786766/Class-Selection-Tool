@@ -11,6 +11,11 @@ $(document).ready(function () {
   $('.collapsible').collapsible();
 });
 
+var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+  accordion: false
+});
+
 // As the user replies, we will append new questions to the page:
 const yes1 = $('#yes1');
 const no1 = $('#no1');
@@ -20,22 +25,22 @@ const questionThree = $('#question3');
 // show question 2
 
 // var instance = M.Collapsible.getInstance(elem);
-no1.on('click', function (event) {
-  questionOne.removeClass('active');
-  questionThree.removeClass('hidden');
-  questionThree.addClass('active');
-  $('.collapsible').collapsible();
-});
+// no1.on('click', function (event) {
+//   questionOne.removeClass('active');
+//   questionThree.removeClass('hidden');
+//   questionThree.addClass('active');
+//   $('.collapsible').collapsible();
+// });
 
-yes1.on('click', function (event) {
-  //  alert('clicked');
-  questionOne.removeClass('active').addClass('replied');
-  yes1.addClass('disabled btn-large');
-  no1.addClass('disabled btn-flat');
-  questionTwo.removeClass('hidden');
-  questionTwo.addClass('active');
-  $('.collapsible').collapsible();
-});
+// yes1.on('click', function (event) {
+
+//   questionOne.removeClass('active').addClass('replied');
+//   yes1.addClass('disabled btn-large');
+//   no1.addClass('disabled btn-flat');
+//   questionTwo.removeClass('hidden');
+//   questionTwo.addClass('active');
+//   $('.collapsible').collapsible();
+// });
 
 $('.btn').click(function () {
   // as the button is clicked:
@@ -48,7 +53,13 @@ $('.btn').click(function () {
   // disable the other button:
   let currentId = this.id;
   let otherBtn;
+  // Start over button refreshes the page:
   const startOverBtn = $('#start_over');
+  startOverBtn.click(function () {
+    location.reload();
+  });
+
+  //Function to disable the other button
   if (currentId % 2 == 0) {
     otherBtn = parseInt(currentId) + 1;
   } else {
@@ -56,14 +67,12 @@ $('.btn').click(function () {
   }
   if (currentId == 2 || currentId == 3) {
     startOverBtn.removeClass('hidden');
-  };
-
+  }
   $(`#${otherBtn}`).addClass('disabled btn-flat');
   $(this).addClass('disabled btn-large');
-  $(`#question${this.id}`).removeClass('hidden').addClass('active');
 
-  // $(`${this.id}`+ 1);
-
+  // Open next question
+  $(`#question${this.id}`).removeClass('hidden');
   $('.collapsible').collapsible();
 });
 
