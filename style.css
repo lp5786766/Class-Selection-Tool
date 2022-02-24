@@ -5,3 +5,8 @@
 .replied {
     background-color:bisque;
 }
+
+.question-one {
+    display: flex;
+    justify-content: flex-end;
+}
