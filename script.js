@@ -11,8 +11,6 @@ $(document).ready(function () {
   $('.collapsible').collapsible();
 });
 
-
-
 // As the user replies, we will append new questions to the page:
 const yes1 = $('#yes1');
 const no1 = $('#no1');
@@ -22,54 +20,50 @@ const questionThree = $('#question3');
 // show question 2
 
 // var instance = M.Collapsible.getInstance(elem);
-no1.on('click', function(event) {
-   
-    questionOne.removeClass('active');
-    questionThree.removeClass('hidden');
-    questionThree.addClass('active');
-    $('.collapsible').collapsible();
+no1.on('click', function (event) {
+  questionOne.removeClass('active');
+  questionThree.removeClass('hidden');
+  questionThree.addClass('active');
+  $('.collapsible').collapsible();
 });
-
 
 yes1.on('click', function (event) {
-    //  alert('clicked');
-    questionOne.removeClass('active').addClass('replied');
-    yes1.addClass('disabled btn-large');
-    no1.addClass('disabled btn-flat');
-    questionTwo.removeClass('hidden');
-    questionTwo.addClass('active');
-    $('.collapsible').collapsible();
+  //  alert('clicked');
+  questionOne.removeClass('active').addClass('replied');
+  yes1.addClass('disabled btn-large');
+  no1.addClass('disabled btn-flat');
+  questionTwo.removeClass('hidden');
+  questionTwo.addClass('active');
+  $('.collapsible').collapsible();
 });
 
-
 $('.btn').click(function () {
-
   // as the button is clicked:
 
   // 1. current question becomes inactive
   // 1.1 If current question === 1, generate "start over" button
   // 2. next question appears
-  // 
-  // alert(`clicked id ${this.id}`);
-  console.log(this);
-console.log(this.id);
-console.log(this.id + 1);
-let currentId = this.id;
-console.log(currentId);
+  //
 
-console.log(parseInt(currentId) + 1);
+  // disable the other button:
+  let currentId = this.id;
+  let otherBtn;
+  if (currentId % 2 == 0) {
+    otherBtn = parseInt(currentId) + 1;
+  } else {
+    otherBtn = parseInt(currentId) - 1;
+  }
 
-
+  $(`#${otherBtn}`).addClass('disabled btn-flat');
   $(this).addClass('disabled btn-large');
-  // $(`${this.id}`+ 1);
   $(`#question${this.id}`).removeClass('hidden').addClass('active');
-  $('.collapsible').collapsible();
 
+  // $(`${this.id}`+ 1);
+
+  $('.collapsible').collapsible();
 });
 
-
 // show question 3
-
 
 //APPENDING A SECTION
 // const yesBtn = $('.yes');
