@@ -43,9 +43,27 @@ yes1.on('click', function (event) {
 
 
 $('.btn').click(function () {
+
+  // as the button is clicked:
+
+  // 1. current question becomes inactive
+  // 1.1 If current question === 1, generate "start over" button
+  // 2. next question appears
+  // 
   // alert(`clicked id ${this.id}`);
+  console.log(this);
+console.log(this.id);
+console.log(this.id + 1);
+let currentId = this.id;
+console.log(currentId);
+
+console.log(parseInt(currentId) + 1);
+
+
   $(this).addClass('disabled btn-large');
-  $(`#question${this.id}`).removeClass('hidden');
+  // $(`${this.id}`+ 1);
+  $(`#question${this.id}`).removeClass('hidden').addClass('active');
+  $('.collapsible').collapsible();
 
 });
 
