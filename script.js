@@ -69,7 +69,12 @@ $('.btn').click(function () {
     startOverBtn.removeClass('hidden');
   }
   $(`#${otherBtn}`).addClass('disabled btn-flat');
-  $(this).addClass('disabled btn-large');
+
+  // if the link button is pressed, keep active:
+  if (this.classList[0] === 'link') {
+  } else {
+    $(this).addClass('disabled btn-large');
+  }
 
   // Open next question
   $(`#question${this.id}`).removeClass('hidden');
