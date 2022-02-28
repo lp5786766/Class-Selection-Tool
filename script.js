@@ -13,7 +13,9 @@ var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, {
   accordion: false,
 });
-
+const resultOne = $('#result1');
+const resultTwo = $('#result2');
+const resultThree = $('#result3');
 
 $('.btn').click(function () {
  
@@ -37,6 +39,13 @@ $('.btn').click(function () {
   if (currentId == 2 || currentId == 3) {
     startOverBtn.removeClass('hidden');
   }
+
+  if (currentId == 10) {
+    resultOne.removeClass('hidden');
+    resultTwo.removeClass('hidden');
+    resultThree.removeClass('hidden');
+  }
+
   $(`#${otherBtn}`).addClass('disabled btn-flat');
 
   // if the link button is pressed, keep active:
